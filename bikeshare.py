@@ -235,14 +235,17 @@ def main():
                 if random_or_specific_rows  == '1':
                     rows_number = int(input('\nHow many rows you would like to preview ? please Use Integrs numbers only!! \n'))
                     print(df.sample(n = rows_number))
-
+            # TO DO: asks how many rows user want to see
                 elif random_or_specific_rows  == '2':
                     start_row_number = int(input('\nEnter start row number, please Use Integrs numbers only!! \n'))
+            #TO DO: asks user for the start row
                     end_row_number = int(input('\nEnter end row number, please Use Integrs numbers only!! \n'))
+            #TO DO: asks user for the end row
                     print(df.iloc[start_row_number : end_row_number])
 
                 elif random_or_specific_rows  not in ('1','2'):
                     print('Not an appropriate choice.')
+                    # force user to enter valid inputs 
                 continue
             else:
                 break
