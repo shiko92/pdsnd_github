@@ -6,6 +6,7 @@ import numpy as np
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
               'washington': 'washington.csv' }
+    # TO DO: make a Dict for the 3 files that will be used through the project 
 
 def get_filters():
     """
@@ -62,39 +63,39 @@ def load_data(city, month, day):
     print (x)
     if 'Gender' in df.columns :
         df['Gender'] = df['Gender'].fillna('Unknown')
-        
-    
+
+
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-  
+
 
     # extract month and day of week from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
-    
+
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-    
+
     # filter by month if applicable
-    
-    
+
+
     if month != 'all':
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-            
+
 
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
-       
-        
-        
+
+
+
     # filter by day of week if applicable
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
-        
-    
+
+
     return df
-    
+
 
 
 
@@ -113,22 +114,22 @@ def time_stats(df):
         popular_month = df['month'].mode()[0]
         print('the most common month is:', popular_month)
         break;
-        
-    
+
+
    # TO DO: display the most common day of week
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     day_counts = df['day_of_week'].value_counts()
     while (day_counts.size > 1):
 
         popular_day = df['day_of_week'].mode()[0]
-        print('the most common day is:',popular_day) 
+        print('the most common day is:',popular_day)
         break;
-    
-    
+
+
     # TO DO: display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
     popular_hour = df['hour'].mode()[0]
-    print('the most common hour is:',popular_hour)    
+    print('the most common hour is:',popular_hour)
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -143,7 +144,7 @@ def station_stats(df):
     pop_start_station = df['Start Station'].value_counts().index.tolist()[0]
     pop_start_station_count = df['Start Station'].value_counts()[0]
     print('most commonly used start station:{}, with total counts of {}'.format( pop_start_station, pop_start_station_count ))
-    
+
     # TO DO: display most commonly used end station
     pop_end_station = df['End Station'].value_counts().index.tolist()[0]
     pop_end_station_count = df['End Station'].value_counts()[0]
@@ -152,7 +153,7 @@ def station_stats(df):
     # TO DO: display most frequent combination of start station and end station trip
     pop_start_end_station = df.groupby('Start Station')['End Station'].value_counts().idxmax()
     print('most frequent combination of start station and end station trip:{}'.format(pop_start_end_station))
-    
+
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -165,15 +166,15 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # TO DO: display total travel time 
+    # TO DO: display total travel time
     total_travel_seconds = df['Trip Duration'].sum()
     print('total travel time is: {} seconds.'.format(total_travel_seconds))
-    
+
 
     # TO DO: display mean travel time
     mean_travel_seconds = df['Trip Duration'].mean()
     print('mean travel time is: {} seconds.'.format(mean_travel_seconds))
-    
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -186,8 +187,8 @@ def user_stats(df):
     start_time = time.time()
 
     # TO DO: Display counts of user types
-    
-    
+
+
     user_types = df['User Type'].value_counts()
     print(user_types)
 
@@ -221,31 +222,31 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        
-        
-        
-            
+
+
+
+
         while True:
             raw_data = input('\nWould you like to see some raw data? Enter yes or no.\n')
             if raw_data.lower() == 'yes':
                 random_or_specific_rows = input('\nIf you would like to see random data rows press 1 for specific rows Enter 2.\n')
-                 
+
                 if random_or_specific_rows  == '1':
                     rows_number = int(input('\nHow many rows you would like to preview ? please Use Integrs numbers only!! \n'))
                     print(df.sample(n = rows_number))
-                    
+
                 elif random_or_specific_rows  == '2':
                     start_row_number = int(input('\nEnter start row number, please Use Integrs numbers only!! \n'))
                     end_row_number = int(input('\nEnter end row number, please Use Integrs numbers only!! \n'))
                     print(df.iloc[start_row_number : end_row_number])
-                    
+
                 elif random_or_specific_rows  not in ('1','2'):
-                    print('Not an appropriate choice.') 
+                    print('Not an appropriate choice.')
                 continue
             else:
                 break
-            
-               
+
+
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
