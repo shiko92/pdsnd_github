@@ -60,7 +60,6 @@ def load_data(city, month, day):
     # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
     x = 'Gender' in df.columns
-    print (x)
     if 'Gender' in df.columns :
         df['Gender'] = df['Gender'].fillna('Unknown')
 
@@ -202,11 +201,11 @@ def user_stats(df):
     # TO DO: Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df.columns :
         earliest_birth_year =int( df['Birth Year'].min())
-        print(earliest_birth_year)
+        print('the earliest birth year is: {} '.format(earliest_birth_year))
         recent_birth_year = int(df['Birth Year'].max())
-        print(recent_birth_year)
+        print('the recent birth year is: {} '.format(recent_birth_year))
         common_birth_year = int(df['Birth Year'].mode()[0])
-        print(common_birth_year)
+        print('the common birth year is: {} '.format(common_birth_year))
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
