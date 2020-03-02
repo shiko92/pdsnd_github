@@ -6,7 +6,7 @@ import numpy as np
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
               'washington': 'washington.csv' }
-    # TO DO: make a Dict for the 3 files that will be used through the project 
+    # TO DO: make a Dict for the 3 files that will be used through the project
 
 def get_filters():
     """
@@ -228,9 +228,10 @@ def main():
 
         while True:
             raw_data = input('\nWould you like to see some raw data? Enter yes or no.\n')
+            # TO DO: asks if user want a sample of row data
             if raw_data.lower() == 'yes':
                 random_or_specific_rows = input('\nIf you would like to see random data rows press 1 for specific rows Enter 2.\n')
-
+            # TO DO: asks if user want to see random or specific row  data
                 if random_or_specific_rows  == '1':
                     rows_number = int(input('\nHow many rows you would like to preview ? please Use Integrs numbers only!! \n'))
                     print(df.sample(n = rows_number))
