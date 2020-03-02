@@ -1,15 +1,16 @@
-### Date created
-Include the date you created this project and README file.
+### 01-03-2020
 
-### Project Title
-Replace the Project Title
+### Filter bikeshare data based on user inputs
+
 
 ### Description
-Describe what your project is about and what it does
+This project was written in **pyhton 3.0** it was a practical implementation of the second part of this ***nanodegree program.*** In this project I used 3 libraries
+* time  
+* pandas
+* numpy
 
-### Files used
-Include the files used
-
-### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+In this project the user can filter the data by:
+ 1. *city (Chicago, New York city or Washington)*
+ 2. *month*
+ 3. *day* <br/>
+also the user has the choice to choose all months and days too. <br />
