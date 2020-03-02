@@ -34,3 +34,13 @@ also the user has the choice to choose all months and days too. <br />
 2. **specific row data** followed by **start row number** and **end row number** <br />
 
 <span style="font-size:larger;">Finaly</span> the scripts ask the user if he would like to restart the filtering process again
+
+
+
+
+### Files used
+I used a template provided from the Udacity bikeshare.py, plus to three CSV files which contain the data for the three cities
+
+
+### Credits
+I used [stackoverflow](http://stackoverflow.com/ "Title") many times while working on this project
