@@ -194,19 +194,19 @@ def user_stats(df):
 
 
     # TO DO: Display counts of gender
-    if 'Gender' in df.columns :
-        user_types = df['Gender'].value_counts()
-        print(user_types)
+
+    user_types = df['Gender'].value_counts()
+    print(user_types)
 
 
     # TO DO: Display earliest, most recent, and most common year of birth
-    if 'Birth Year' in df.columns :
-        earliest_birth_year =int( df['Birth Year'].min())
-        print(earliest_birth_year)
-        recent_birth_year = int(df['Birth Year'].max())
-        print(recent_birth_year)
-        common_birth_year = int(df['Birth Year'].mode()[0])
-        print(common_birth_year)
+
+    earliest_birth_year =int( df['Birth Year'].min())
+    print(earliest_birth_year)
+    recent_birth_year = int(df['Birth Year'].max())
+    print(recent_birth_year)
+    common_birth_year = int(df['Birth Year'].mode()[0])
+    print(common_birth_year)
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -235,17 +235,17 @@ def main():
                 if random_or_specific_rows  == '1':
                     rows_number = int(input('\nHow many rows you would like to preview ? please Use Integrs numbers only!! \n'))
                     print(df.sample(n = rows_number))
-            # TO DO: asks how many rows user want to see
+                # TO DO: asks how many rows user want to see
                 elif random_or_specific_rows  == '2':
                     start_row_number = int(input('\nEnter start row number, please Use Integrs numbers only!! \n'))
-            #TO DO: asks user for the start row
+                    #TO DO: asks user for the start row
                     end_row_number = int(input('\nEnter end row number, please Use Integrs numbers only!! \n'))
-            #TO DO: asks user for the end row
+                    #TO DO: asks user for the end row
                     print(df.iloc[start_row_number : end_row_number])
 
                 elif random_or_specific_rows  not in ('1','2'):
                     print('Not an appropriate choice.')
-                    # force user to enter valid inputs 
+                    # force user to enter valid inputs
                 continue
             else:
                 break
